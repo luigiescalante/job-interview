@@ -67,8 +67,10 @@ $ sudo docker php artisan migrate
 $ sudo docker php artisan db:seed
 ```
 
-#Validar que el servidor este activo
+# Validar que el servidor este activo
+
 https://172.19.199.2/api/v1/_healtcheck
+
 Importante: El servidor general un certificado local, en el navegador hay que darle aceptar en como "sitio no seguro"
 
 ## Datos del usuario default
@@ -77,7 +79,8 @@ Basic Auth Token: sUV9WboHWmgRXPhniGX8YbMUmMO0PPAjIQ8dbT0IfxVY6UJ4whcMLPhvDkwZ
 User: admin
 Password: neology
 ```
-##PostMan
+## PostMan
+
 https://www.getpostman.com/collections/86fdbea474a2a442df46
 
 ## Comando Crontab log
@@ -85,7 +88,7 @@ $ sudo docker exec neology-app php artisan neology:user-log
 
 Utilizamos el comando de crobtab -e 
 
-### Start website
+### Reiniciar Contenedores
 Start the docker container
 ```bash
 docker-compose up -d
