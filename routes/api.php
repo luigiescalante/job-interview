@@ -13,8 +13,24 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::get('_healthcheck', 'HealthController@index');
+
+Route::group(['prefix' => 'v1'], function () {
+    //users
+    Route::get('/users', 'UsersController@index');
+    Route::get('/users/id/{id}', 'UsersController@show');
+    Route::post('/users', 'UsersController@store');
+    Route::put('/users/id/{id}', 'UsersController@update');
+    Route::delete('/users/id/{id}', 'UsersController@destroy');
+    //documents
+    Route::get('/files', 'FilesController@index');
+    Route::get('/files/user-id/{id}', 'FilesController@show');
+    Route::post('/files', 'FilesController@store');
+    Route::put('/files/id/{id}', 'FilesController@update');
+    Route::delete('/files/id/{id}', 'FilesController@destroy');
+});
+
+
 
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
