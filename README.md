@@ -84,6 +84,15 @@ Password: neology
 https://www.getpostman.com/collections/86fdbea474a2a442df46
 
 ## Comando Crontab log
+Para crear elcomando que se ejecuta cada 5 min se creo un command neology:user-log
+```bash
+$sudo docker exec -ti neology-app bash
+# crontab -e
+Escribimos en crobtab
+* * * * 5 cd /usr/share/nginx/html && php artisan neology:user-log
+mariadb> create database neology;
+Salimos del editor :!wq
+```
 $ sudo docker exec neology-app php artisan neology:user-log
 
 Utilizamos el comando de crobtab -e 
