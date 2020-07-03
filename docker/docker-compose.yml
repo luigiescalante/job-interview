@@ -1,0 +1,33 @@
+version: '3'
+services:
+  web:
+    stdin_open: true
+    tty: true
+    build: .
+    image: centos8-webserver:v1
+    container_name: neology-app
+    volumes:
+      - '/home/kaiba/Code/php-72/neology-test/:/usr/share/nginx/html'
+    ports:
+      - "443:443"
+    networks:
+      docker_net:
+        ipv4_address: 172.19.199.2
+  db:
+    image: mariadb:bionic
+    container_name: neology-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - '/home/kaiba/Code/mariadb/neology-db:/var/lib/mysql'
+    ports:
+      - '3306:3306'
+    networks:
+      docker_net:
+        ipv4_address: 172.19.199.3
+networks:
+  docker_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.199.0/24
