@@ -224,7 +224,7 @@ class Files
 
     private function generatePath()
     {
-        return "https://kaiba.com/".$this->getType().'/'.$this->getFileName()
+        return env('APP_URL').$this->getType().'/'.$this->getFileName()
             .'.'.$this->getExtension();
 
     }
