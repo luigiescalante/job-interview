@@ -48,7 +48,7 @@ class UsersController extends Controller
             $userRepository = new UsersRepository($users->toArray());
             $userRepository->save();
 
-            return ApiResponse::success($request->toArray(),
+            return ApiResponse::success(['id' => $userRepository->getQueueableId()],
                 "user save successfully");
         } catch (\Exception $e) {
             return ApiResponse::error($e->getMessage());
@@ -63,7 +63,7 @@ class UsersController extends Controller
             if (empty($user)) {
                 return ApiResponse::errorValidation(["the user doesn't exist"]);
             }
-            $usersIns = Users::factory($request->toArray());
+            $usersIns = Users::update($request->toArray());
             if (!empty($usersIns->getErrors())) {
                 return ApiResponse::errorValidation($usersIns->getErrors());
             }

@@ -19,6 +19,7 @@ class Files extends Migration
             $table->string('file_name', 50)->nullable(false);
             $table->string('extension', 4)->nullable(false);
             $table->enum('type', ['picture', 'cv'])->nullable(false);
+            $table->string('url')->nullable(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

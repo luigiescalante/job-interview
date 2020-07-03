@@ -5,11 +5,12 @@ namespace App\Models\Files;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class FilesRepository extends Model
 {
     protected $table = 'files';
-    protected $fillable = ['user_id', 'file_name', 'extension', 'role'];
+    protected $fillable = ['user_id', 'file_name', 'extension', 'role', 'url'];
 
     public function getFileById(int $id)
     {
@@ -22,14 +23,20 @@ class FilesRepository extends Model
         return [];
     }
 
-    public function getFilesByUser(int $userId): array
+    public function getFiles(): array
     {
-        $users = $this->all()->toArray();
-        foreach ($users as $index => $data) {
-            unset($users[$index]['password']);
-        }
+        $files = $this->all()->toArray();
 
-        return $users;
+        return $files;
+    }
+
+
+    public function getFilesByUserId(int $userId)
+    {
+        $files = DB::table($this->table)
+            ->where('user_id', $userId)->get()->toArray();
+
+        return $files;
     }
 
     public function deleteFile()
@@ -37,4 +44,17 @@ class FilesRepository extends Model
 
         $this->delete();
     }
+
+    public function updateData(Files $files)
+    {
+        $this->user_id = $files->getUserId();
+        $this->file_name = $files->getFileName();
+        $this->extension = $files->getExtension();
+        $this->type = $files->getType();
+        $this->url = $files->getUrl();
+        $this->save();
+
+    }
+
+
 }
