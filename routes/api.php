@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('_healthcheck', 'HealthController@index');
 
-Route::group(['prefix' => 'v1'], function () {
+Route::post('login', 'LoginController@index');
+
+Route::group(['prefix' => 'v1', 'middleware' => ['auth:api']], function () {
     //users
     Route::get('/users', 'UsersController@index');
     Route::get('/users/id/{id}', 'UsersController@show');

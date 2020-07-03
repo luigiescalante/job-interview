@@ -5,6 +5,8 @@ namespace App\Models\Users;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersRepository extends Model
 {
@@ -19,6 +21,7 @@ class UsersRepository extends Model
             'role',
             'status',
         ];
+    CONST ADMIN_ROLE = 'admin';
 
     public function getUserById(int $id)
     {
@@ -56,6 +59,23 @@ class UsersRepository extends Model
         $this->user_name = $users->getUserName();
         $this->role = $users->getRole();
         $this->save();
+
+    }
+
+    public function login($user, $password)
+    {
+        $loginUser = DB::table($this->table)
+            ->where('user_name', $user)
+            ->where('role', self::ADMIN_ROLE)
+            ->where('status', 1)
+            ->get()->first();
+        if (!empty($loginUser)) {
+            if (Hash::check($password, $loginUser->password)) {
+                return $loginUser;
+            }
+        }
+
+        return false;
 
     }
 
