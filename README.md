@@ -53,7 +53,7 @@ docker ps -a
 Entramos al contenedor de neology-db y creamos la base de datos neology
 ```bash
 $sudo docker exec -ti neology-db bash
-#mysql -u root -p 
+# mysql -u root -p 
 Ingresamos el password 'root'
 mariadb> create database neology;
 ```
@@ -69,6 +69,7 @@ $ sudo docker php artisan db:seed
 
 #Validar que el servidor este activo
 https://172.19.199.2/api/v1/_healtcheck
+Importante: El servidor general un certificado local, en el navegador hay que darle aceptar en como "sitio no seguro"
 
 ## Datos del usuario default
 ```bash
