@@ -1,11 +1,11 @@
-#Prueba Backend PHP
+# Prueba Backend PHP
 Prueba para vacante para programador BackEnd PHP
 Versiones:
 
 * Base de datos: MariaDb 11
 * PHP: Versión 7.2 y Laravel Laravel Framework 7.18.0
 
-##Requerimientos 
+## Requerimientos 
 1.Docker
 
 2.Docker Compose
@@ -66,8 +66,6 @@ $ sudo docker php artisan migrate:install
 $ sudo docker php artisan migrate
 $ sudo docker php artisan db:seed
 ```
-#
-$sudo docker exec neology-app php artisan neology:user-log
 
 #Validar que el servidor este activo
 https://172.19.199.2/api/v1/_healtcheck
@@ -84,6 +82,7 @@ https://www.getpostman.com/collections/86fdbea474a2a442df46
 ## Comando Crontab log
 $ sudo docker exec neology-app php artisan neology:user-log
 
+Utilizamos el comando de crobtab -e 
 
 ### Start website
 Start the docker container
