@@ -69,7 +69,7 @@ $ sudo docker exec neology-app php artisan db:seed
 
 # Validar que el servidor este activo
 
-https://172.19.199.2/api/v1/_healtcheck
+https://172.19.199.2/api/_healthcheck
 
 Importante: El servidor general un certificado local, en el navegador hay que darle aceptar en como "sitio no seguro"
 
