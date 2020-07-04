@@ -66,6 +66,11 @@ $ sudo docker exec neology-app php artisan migrate:install
 $ sudo docker exec neology-app php artisan migrate
 $ sudo docker exec neology-app php artisan db:seed
 ```
+8.Crear las carpetas para contener las images y los documentos con el usuario que tiene permisos la aplicación, en la raiz del proyecto creamos las carpetas
+```bash
+$ mkdir public/cv
+$ mkdir public/picture
+```
 
 # Validar que el servidor este activo
 
