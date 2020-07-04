@@ -59,12 +59,12 @@ mariadb> create database neology;
 ```
 7.Ejecutar los siguientes comandos dentro de la carpeta de docker
 ```bash
-$ sudo docker exec -ti neology-db composer install
-$ sudo docker exec cp .env.example .env
-$ sudo docker exec php artisan key:generate
-$ sudo docker php artisan migrate:install
-$ sudo docker php artisan migrate
-$ sudo docker php artisan db:seed
+$ sudo docker exec neology-app composer install
+$ sudo docker exec neology-app cp .env.example .env
+$ sudo docker exec neology-app php artisan key:generate
+$ sudo docker exec neology-app php artisan migrate:install
+$ sudo docker exec neology-app php artisan migrate
+$ sudo docker exec neology-app php artisan db:seed
 ```
 
 # Validar que el servidor este activo
